@@ -1,0 +1,12 @@
+body{
+    background-color: aliceblue;
+}
+
+.link{
+    background-color: #369a6e;
+    padding: 10px 20px;
+    border-radius: 7px;
+    margin-right: 20px;
+    color: white
+    ;
+}
