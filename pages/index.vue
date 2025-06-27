@@ -1,17 +1,16 @@
 <!-- pages/index.vue -->
 <template>
         <h1>{{ greeting }}</h1>
-        <NuxtLink to="/about" class="link">О нас</NuxtLink>
-        <button @click="changeGreeting">Change Greeting</button>
+        <button @click="changeGreeting">Жмяк</button>
         <GreetingCard title="Welcome to Nuxt" description="This is your first Nuxt.js 3 component!" />
         <InfoBox text="Это тестовый текст, Максим, ты молодец!"/>
 </template>
 
 <script setup>
-const greeting = ref('Hello, Nuxt 3!');
+const greeting = ref('Nuxt');
 
 function changeGreeting() {
-    greeting.value = 'Welcome to the Nuxt.js 3 Course!';
+    greeting.value = 'Бдыыыщщщщщ!';
 }
 </script>
 

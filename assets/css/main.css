@@ -1,12 +1,13 @@
-body{
+body {
     background-color: aliceblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.link{
+.link-cust {
     background-color: #369a6e;
     padding: 10px 20px;
     border-radius: 7px;
     margin-right: 20px;
-    color: white
-    ;
+    color: white;
+    text-decoration: none;
 }
