@@ -3,8 +3,9 @@
     <h1>Друзья</h1>
     <Container>
         <nav>
-            <NuxtLink v-for="(name, id) in users" :key="id" :to="`/users/${id}`">
-                {{ name }}
+            <NuxtLink v-for="(user, id) in users" :key="id" :to="`/users/${id}`" class="user-link">
+                
+                {{ user.name }}
             </NuxtLink>
         </nav>
     </Container>
