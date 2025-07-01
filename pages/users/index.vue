@@ -1,20 +1,23 @@
 <!-- pages/users/index.vue -->
 <template>
-            <h1>Друзья</h1>
+    <h1>Друзья</h1>
     <Container>
         <nav>
-            <NuxtLink to="/users/100001">Даниил Петров</NuxtLink>
-            <NuxtLink to="/users/2">Гавря Гавриловский</NuxtLink>
-            <NuxtLink to="/users/3">Максим Усанов</NuxtLink>
-            <NuxtLink to="/users/4">Андрей Кузнецов</NuxtLink>
+            <NuxtLink v-for="(name, id) in users" :key="id" :to="`/users/${id}`">
+                {{ name }}
+            </NuxtLink>
         </nav>
     </Container>
 </template>
 
+<script setup>
+const { users } = useUsers();
+</script>
+
 <style scoped>
-    nav{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 </style>

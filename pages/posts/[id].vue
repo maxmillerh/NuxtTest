@@ -1,10 +1,27 @@
+<!-- pages/posts/[id].vue -->
 <template>
+    <h1>{{ post.title }}</h1>
     <Container>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.body }}</p>
+        <div v-if="pending">Загрузка...</div>
+        <div v-else-if="error">Ошибка: {{ error.message }}</div>
+        <div v-else>
+            <p>{{ post.body }}</p>
+            <NuxtLink class="link-cust" to="/posts">Назад</NuxtLink>
+        </div>
     </Container>
 </template>
 
-<!-- <script setup>
+<script setup>
 const route = useRoute();
-</script> -->
+const postId = route.params.id; // Получаем id из URL
+
+// Загружаем данные поста по id
+const { data: post, pending, error } = await useFetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+</script>
+
+<style scoped>
+p{
+    margin-bottom: 40px;
+}
+
+</style>

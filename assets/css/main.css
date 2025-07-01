@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     background-color: aliceblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,6 +19,16 @@ body {
     text-decoration: none;
 }
 
-.router-link-active{
+.router-link-active {
     background-color: blueviolet;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
 }

@@ -5,10 +5,9 @@
         <div v-if="pending">Загрузка...</div>
         <div v-else-if="error">Ошибка: {{ error.message }}</div>
         <ul v-else>
-            <li v-for="post in posts" :key="post.id">
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.body }}</p>
-            </li>
+            <NuxtLink v-for="post in posts" :key="post.id" :to="`/posts/${post.id}`">
+                <PostCard :title="post.title" :body="post.body"></PostCard>
+            </NuxtLink>
         </ul>
     </Container>
 </template>
@@ -17,32 +16,24 @@
 const { data: posts, pending, error } = await useFetch('https://jsonplaceholder.typicode.com/posts');
 
 const filteredPosts = posts.value.map(post => ({
-  id: post.id,
-  title: post.title,
-  body: post.body
+    id: post.id,
+    title: post.title,
+    body: post.body
 }));
 </script>
 
 <style scoped>
-ul{
+ul {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+      display: grid;
+  grid-template-columns: 1fr 1fr; /* Две колонки равной ширины */
+  gap: 20px;
     padding: 0 20px;
 }
 
-li{
-    background-color: rgb(243, 243, 243);
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: 0.5s all ease;
-}
-li:hover{
-      box-shadow: 0 2px 6px 2px rgba(71, 71, 71, 0.2);
-      cursor: pointer;
-      background-color: rgb(233, 233, 233);
-      transform: scale(1.05);
-}
 
+a{
+    color: #333;
+    text-decoration: none;
+}
 </style>

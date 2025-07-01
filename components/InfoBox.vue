@@ -17,8 +17,10 @@ defineProps({
   padding: 20px;
   border-radius: 20px;
   margin: 20px auto;
-  max-width: 800px;
+  max-width: 1200px;
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
 }
 
 

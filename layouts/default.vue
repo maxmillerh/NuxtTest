@@ -1,14 +1,12 @@
+<!-- layouts/defult.vue -->
 <template>
     <div class="container">
-        <Navigation />
+        <Header />
         <slot></slot>
+        <Footer />
     </div>
 </template>
 
-<style scoped>
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-</style>
+<script setup>
+import Footer from '@/components/Footer.vue'
+</script>

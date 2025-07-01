@@ -8,9 +8,3 @@
     </nav>
 </template>
 
-<style scoped>
-nav{
-    margin-top: 50px;
-}
-
-</style>
