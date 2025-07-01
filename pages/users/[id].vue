@@ -16,6 +16,11 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+const pageVisits = useState('pageVisits');
+onMounted(() => {
+  pageVisits.value += 1;
+});
 const route = useRoute();
 const { users } = useUsers();
 

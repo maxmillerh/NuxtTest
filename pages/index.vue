@@ -11,6 +11,11 @@
 <script setup>
 const greeting = ref('Nuxt');
 
+import { onMounted } from 'vue';
+const pageVisits = useState('pageVisits');
+onMounted(() => {
+  pageVisits.value += 1;
+});
 function changeGreeting() {
     greeting.value = 'Бдыыыщщщщщ!';
 }

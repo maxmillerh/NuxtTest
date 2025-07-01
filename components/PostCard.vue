@@ -22,6 +22,7 @@ defineProps({
     height: 100%;
 }
 
+
 .post-card:hover {
     box-shadow: 0 2px 6px 2px rgba(71, 71, 71, 0.2);
     cursor: pointer;

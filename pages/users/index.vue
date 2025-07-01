@@ -12,6 +12,13 @@
 </template>
 
 <script setup>
+
+
+import { onMounted } from 'vue';
+const pageVisits = useState('pageVisits');
+onMounted(() => {
+  pageVisits.value += 1;
+});
 const { users } = useUsers();
 </script>
 
@@ -20,5 +27,14 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.user-link{
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.4s all ease;
+
+}
+.user-link:hover{
+    color: #369a6e;
 }
 </style>

@@ -13,6 +13,12 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+const pageVisits = useState('pageVisits');
+onMounted(() => {
+  pageVisits.value += 1;
+});
+
 const { data: posts, pending, error } = await useFetch('https://jsonplaceholder.typicode.com/posts');
 
 const filteredPosts = posts.value.map(post => ({

@@ -10,6 +10,41 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body.dark-theme{
+    background-color: rgb(46, 46, 46);
+    color: white;
+}
+body.dark-theme .back{
+    background-color: rgb(100, 100, 100);
+}
+body.dark-theme .post-card{
+    background-color: rgb(67, 67, 67);
+}
+body.dark-theme .post-card:hover{
+    background-color: rgb(48, 48, 48);
+}
+body.dark-theme .post-card p{
+    color: rgb(219, 219, 219);
+}
+body.dark-theme .post-card h3{
+    color: rgb(255, 255, 255);
+}
+body.dark-theme .container-css{
+    background-color: rgb(61 61 61);
+    color: white;
+}
+body.dark-theme .text-block{
+    background-color: rgb(61 61 61);
+    color: white !important;
+}
+body.dark-theme .text-block p{
+    color: white !important;
+}
+body.dark-theme .container-css a{
+    
+    color: white;
+}
+
 .link-cust {
     background-color: #369a6e;
     padding: 10px 20px;
