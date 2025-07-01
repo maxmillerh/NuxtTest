@@ -11,3 +11,7 @@ body {
     color: white;
     text-decoration: none;
 }
+
+.router-link-active{
+    background-color: blueviolet;
+}

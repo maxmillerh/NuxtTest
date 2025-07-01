@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <NuxtLink to="/" class="link-cust">Главная</NuxtLink> 
+        <NuxtLink to="/" class="link-cust .nuxt-link-active">Главная</NuxtLink> 
         <NuxtLink to="/about" class="link-cust">О нас</NuxtLink> 
         <NuxtLink to="/contacts" class="link-cust">Контакты</NuxtLink>
         <NuxtLink to="/users" class="link-cust">Друзья</NuxtLink>
