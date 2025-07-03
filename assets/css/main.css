@@ -8,7 +8,40 @@
 body {
     background-color: aliceblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: 0.4s all ease;
 }
+
+
+.link-cust {
+    background-color: #369a6e;
+    padding: 10px 20px;
+    border-radius: 7px;
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.router-link-active {
+    background-color: blueviolet;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+
+
+
+
+
+
+/* темная тема */
 
 body.dark-theme{
     background-color: rgb(46, 46, 46);
@@ -43,27 +76,4 @@ body.dark-theme .text-block p{
 body.dark-theme .container-css a{
     
     color: white;
-}
-
-.link-cust {
-    background-color: #369a6e;
-    padding: 10px 20px;
-    border-radius: 7px;
-    margin-right: 20px;
-    color: white;
-    text-decoration: none;
-}
-
-.router-link-active {
-    background-color: blueviolet;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
 }

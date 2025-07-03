@@ -7,24 +7,30 @@
         <div v-else>
             <p>{{ post.body }}</p>
             <NuxtLink class="link-cust" to="/posts">Назад</NuxtLink>
+            <span>Просмотров: {{ pageVisitsPost }}</span>
         </div>
     </Container>
 </template>
 
+
+<!-- скрипты -->
 <script setup>
-import { onMounted } from 'vue';
-const pageVisits = useState('pageVisits');
+
+/* счетчик */
+const pageVisitsPost = useState('pageVisitsPost', () => 0);
 onMounted(() => {
-  pageVisits.value += 1;
+  pageVisitsPost.value += 1;
 });
 
+/* контент */
 const route = useRoute();
-const postId = route.params.id; // Получаем id из URL
-
-// Загружаем данные поста по id
+const postId = route.params.id; 
 const { data: post, pending, error } = await useFetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 </script>
 
+
+
+<!-- стили -->
 <style scoped>
 p{
     margin-bottom: 40px;
