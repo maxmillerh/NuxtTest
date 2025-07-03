@@ -3,24 +3,27 @@
   <div class="post-card">
     <h3>{{ title }}</h3>
     <p>{{ description }}</p>
-    <p></p>
+    <span>{{ author }}</span>
   </div>
 </template>
 
 <script setup>
 defineProps({
   title: String,
-  description: String
+  description: String,
+  userId: Number,
+  author: String,
 });
 </script>
 
 <style scoped>
 .post-card {
     background-color: var(--white2);
-    padding: 20px 30px;
+    padding: 25px 35px 60px 35px;
     border-radius: 10px;
     transition: 0.5s all ease;
     height: 100%;
+    position: relative;
 }
 
 
@@ -29,6 +32,13 @@ defineProps({
     cursor: pointer;
     background-color: rgb(233, 233, 233);
     transform: scale(1.05);
+}
+
+span{
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color:#369a6e;
 }
 
 h3 {
