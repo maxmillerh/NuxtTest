@@ -2,21 +2,22 @@
 <template>
   <div class="post-card">
     <h3>{{ title }}</h3>
-    <p>{{ body }}</p>
+    <p>{{ description }}</p>
+    <p></p>
   </div>
 </template>
 
 <script setup>
 defineProps({
   title: String,
-  body: String
+  description: String
 });
 </script>
 
 <style scoped>
 .post-card {
-    background-color: rgb(243, 243, 243);
-    padding: 10px 20px;
+    background-color: var(--white2);
+    padding: 20px 30px;
     border-radius: 10px;
     transition: 0.5s all ease;
     height: 100%;
@@ -32,9 +33,12 @@ defineProps({
 
 h3 {
   color: #2f495e;
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 p {
   color: #666;
+  text-align: left;
 }
 </style>

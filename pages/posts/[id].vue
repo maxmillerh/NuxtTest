@@ -1,39 +1,38 @@
 <!-- pages/posts/[id].vue -->
 <template>
-    <h1>{{ post.title }}</h1>
-    <Container>
-        <div v-if="pending">Загрузка...</div>
-        <div v-else-if="error">Ошибка: {{ error.message }}</div>
-        <div v-else>
-            <p>{{ post.body }}</p>
-            <NuxtLink class="link-cust" to="/posts">Назад</NuxtLink>
-            <span>Просмотров: {{ pageVisitsPost }}</span>
-        </div>
-    </Container>
+  <h1>{{ post?.title }}</h1>
+  <Container>
+    <div v-if="pending">Загрузка...</div>
+    <div v-else-if="error">Ошибка: {{ error.message }}</div>
+    <div v-else>
+      <p class="post_text">{{ post.text }}</p>
+      <NuxtLink class="link-cust" @click="goBack">Назад</NuxtLink>
+      <span>Просмотров: {{ pageVisitsPost }}</span>
+    </div>
+  </Container>
 </template>
 
-
-<!-- скрипты -->
 <script setup>
+import { onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-/* счетчик */
 const pageVisitsPost = useState('pageVisitsPost', () => 0);
 onMounted(() => {
   pageVisitsPost.value += 1;
 });
 
-/* контент */
 const route = useRoute();
-const postId = route.params.id; 
-const { data: post, pending, error } = await useFetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+const postId = route.params.id;
+const { data: post, pending, error } = await useFetch(`/api/posts/${postId}`);
+
+const router = useRouter();
+function goBack() {
+  router.back();
+}
 </script>
 
-
-
-<!-- стили -->
 <style scoped>
-p{
-    margin-bottom: 40px;
+p {
+  margin-bottom: 40px;
 }
-
 </style>

@@ -3,13 +3,26 @@
     <Container>
         <div class="profile-header">
             <NuxtLink class="back" to="/users">
-               <span>Назад</span>
+                <span>Назад</span>
             </NuxtLink>
             <div>
                 <h1>Профиль пользователя</h1>
                 <img :src="`/img/${userData.image}`" :alt="userData.name" class="profile-avatar" />
-                <h3>{{ userData.name }}</h3>
+                <h2>{{ userData.name }}</h2>
                 <p>ID: {{ route.params.id }}</p>
+            </div>
+        </div>
+        <div v-if="pending" class="skeleton-posts wrapCards">
+            <p>Загружаем статьи...</p>
+            <div class="skeleton-card" v-for="n in 5" :key="n"></div>
+        </div>
+        <div v-else-if="error">Ошибка: {{ error.message }}</div>
+        <div v-else class="pageContent">
+            <h3>Статьи пользователя</h3>
+            <div class="wrap_Post">
+                <NuxtLink v-for="post in posts" :key="post.id" :to="`/posts/${post.id}`">
+                    <PostCard :title="post.title" :description="post.description"></PostCard>
+                </NuxtLink>
             </div>
         </div>
     </Container>
@@ -17,30 +30,49 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
 const pageVisits = useState('pageVisits');
 onMounted(() => {
-  pageVisits.value += 1;
+    pageVisits.value += 1;
 });
+
 const route = useRoute();
 const { users } = useUsers();
-
-const userData = users[route.params.id] || { 
-    name: 'Пользователь не найден', 
-    image: 'default.jpg' 
+const userData = users[route.params.id] || {
+    name: 'Пользователь не найден',
+    image: 'default.jpg',
 };
+
+const { data: posts, pending, error } = useAsyncData(
+    `user-posts-${route.params.id}`,
+    () => $fetch(`/api/posts?userId=${route.params.id}`)
+);
 </script>
 
 <style scoped>
-h1{
+h1 {
     margin-bottom: 30px;
     color: #aaaaaa;
 }
-
-.profile-header{
+h3{
+    text-align: left;
+    width: 80%;
+    margin: 30px auto 0 auto;
+    padding: 0 30px;
+    color: #aaaaaa;
+    font-size: 28px;
+}
+.profile-header {
     position: relative;
 }
 
-.back{
+.wrap_Post {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.back {
     font-size: 14px;
     font-weight: 600;
     color: #333;
@@ -56,10 +88,10 @@ h1{
     cursor: pointer;
 }
 
-.profile-avatar{
+.profile-avatar {
     border-radius: 50%;
     width: 180px;
     height: 180px;
+    margin-bottom: 10px;
 }
-
 </style>

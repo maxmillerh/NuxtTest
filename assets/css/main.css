@@ -1,7 +1,31 @@
+:root {
+    --black: rgb(46, 46, 46);
+    /* фон страниц */
+    --gray: rgb(61 61 61);
+    /* фон контейнеров */
+    --gray2: rgb(67, 67, 67);
+    /* фон карточек */
+    --gray3: rgb(79, 79, 79);
+    /* посмотрим.. */
+    --gray4: rgb(92, 92, 92);
+    /* посмотрим.. */
+    --white: rgb(255, 255, 255);
+    /* ну белый */
+    --white2: rgb(245, 245, 245);
+    --white3: rgb(235, 235, 235);
+    --white4: rgb(225, 225, 225);
+    --white5: rgb(215, 215, 215);
+    /* цвет подзаголовков */
+}
+
+
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 0.5s ease all;
 }
 
 
@@ -19,6 +43,7 @@ body {
     margin-right: 20px;
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .router-link-active {
@@ -36,44 +61,120 @@ body {
 }
 
 
+a {
+    text-decoration: none;
+}
 
+.post_text{
+    color: var(--gray3);
+    font-size: 20px;
+    margin: 22px;
+    line-height: 150%;
+}
+
+.wrap_Post {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+
+
+/* загрузка */
+.skeleton-card {
+    height: 80px;
+    background-color: var(--white2);
+    border-radius: 6px;
+    animation: pulse 1.2s infinite ease;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: var(--white2);
+    }
+
+    50% {
+        background-color: var(--white3);
+    }
+
+    100% {
+        background-color: var(--white4);
+    }
+}
 
 
 
 
 /* темная тема */
 
-body.dark-theme{
-    background-color: rgb(46, 46, 46);
-    color: white;
+body.dark-theme {
+    background-color: var(--black);
+    color: var(--white2);
 }
-body.dark-theme .back{
-    background-color: rgb(100, 100, 100);
+
+body.dark-theme .back {
+    background-color: var(--gray2);
 }
-body.dark-theme .post-card{
-    background-color: rgb(67, 67, 67);
+
+body.dark-theme .post-card {
+    background-color: var(--gray2);
 }
-body.dark-theme .post-card:hover{
-    background-color: rgb(48, 48, 48);
+
+body.dark-theme .post-card:hover {
+    background-color: var(--black);
 }
-body.dark-theme .post-card p{
-    color: rgb(219, 219, 219);
+
+body.dark-theme .post-card p {
+    color: var(--white5);
 }
-body.dark-theme .post-card h3{
-    color: rgb(255, 255, 255);
+
+body.dark-theme .post-card h3 {
+    color: var(--white2);
 }
-body.dark-theme .container-css{
-    background-color: rgb(61 61 61);
-    color: white;
+
+body.dark-theme .container-css {
+    background-color: var(--gray);
+    color: var(--white);
 }
-body.dark-theme .text-block{
-    background-color: rgb(61 61 61);
-    color: white !important;
+
+body.dark-theme .text-block {
+    background-color: var(--gray);
+    color: var(--white) !important;
 }
-body.dark-theme .text-block p{
-    color: white !important;
+
+body.dark-theme .text-block p {
+    color: var(--white) !important;
 }
-body.dark-theme .container-css a{
-    
-    color: white;
+
+body.dark-theme .container-css a {
+    color: var(--white);
 }
+body.dark-theme .post_text{
+    color: var(--white3);
+
+}
+
+@keyframes pulse-dark {
+    0% {
+        background-color: var(--gray2);
+    }
+
+    50% {
+        background-color: var(--gray3);
+    }
+
+    100% {
+        background-color: var(--gray4);
+    }
+}
+
+body.dark-theme .skeleton-card{
+    animation: pulse-dark 1.2s infinite ease;
+}
+
+
+
+
+
