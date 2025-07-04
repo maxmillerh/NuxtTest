@@ -34,6 +34,7 @@ header {
   font-weight: 900;
   color: var(--violet);
   font-size: 30px;
+  text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.5);
 }
 
 .logo.router-link-active {

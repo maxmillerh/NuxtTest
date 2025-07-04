@@ -1,6 +1,6 @@
 <!-- pages/users/index.vue -->
 <template>
-    <h1>Друзья</h1>
+    <h1>Люди</h1>
     <Container>
         <nav>
             <NuxtLink v-for="(user, id) in users" :key="id" :to="`/users/${id}`" class="user-link">

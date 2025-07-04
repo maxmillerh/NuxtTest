@@ -1,6 +1,5 @@
 <!-- pages/login.vue -->
 <template>
-  
   <ContainerTwo>
     <h1>Вход</h1>
     <div class="form-container">
@@ -8,23 +7,17 @@
       <form @submit.prevent="handleSubmit">
         <div class="form-item">
           <label for="login">Логин</label>
-          <input class="color-one"
-            type="text"
-            name="login"
-            placeholder="Buryat"
-            v-model="login"
-          >
+          <input class="color-one" type="text" name="login" id="login" placeholder="Buryat" v-model="login">
         </div>
         <div class="form-item">
           <label for="pass">Пароль</label>
-          <input  class="color-one"
-            type="password"
-            name="pass"
-            placeholder="12345"
-            v-model="password"
-          >
+          <input class="color-one" type="password" name="pass" id="pass" placeholder="12345" v-model="password">
         </div>
         <button class="link-cust" type="submit">Войти</button>
+        <div class="qwestreg"> 
+          <span>Нет аккаунта?</span>
+          <NuxtLink to="/registr" class="link-text">Зарегистрироваться</NuxtLink>
+        </div>
       </form>
     </div>
   </ContainerTwo>
@@ -40,25 +33,32 @@ const login = ref('');
 const password = ref('');
 const errorMessage = ref('');
 const router = useRouter();
-const { users } = useUsers();
+const { users, loadUsers } = useUsers();
 const loggedInUserId = useState('loggedInUserId', () => '');
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   errorMessage.value = '';
-  
-  // Ищем пользователя по логину и паролю, учитывая id из ключей объекта users
-  const userEntry = Object.entries(users).find(
-    ([id, u]) => u.login.toLowerCase() === login.value.toLowerCase() && u.pass === password.value
-  );
+
+  // Убедимся, что пользователи загружены
+  await loadUsers();
+
+  // Проверяем, что users.value — объект
+  if (!users.value || typeof users.value !== 'object') {
+    errorMessage.value = 'Ошибка загрузки пользователей';
+    return;
+  }
+
+  // Ищем пользователя
+  const userEntry = Object.entries(users.value).find(([id, u]) => {
+    return u && typeof u === 'object' && u.login && u.login.toLowerCase() === login.value.toLowerCase() && u.pass === password.value;
+  });
 
   if (userEntry) {
-    const userId = userEntry[0]; // id — это ключ объекта users
-    // Сохраняем userId в localStorage и useState
+    const userId = userEntry[0];
     if (process.client) {
       localStorage.setItem('userId', userId);
     }
     loggedInUserId.value = userId;
-    // Перенаправляем на страницу профиля (/users/:id)
     router.push(`/users/${userId}`);
   } else {
     errorMessage.value = 'Неверный логин или пароль';
@@ -82,6 +82,8 @@ form {
   gap: 10px;
   flex-direction: column;
 }
+
+
 
 input {
   padding: 10px;

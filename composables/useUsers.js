@@ -1,17 +1,56 @@
-// composables/useUsers.js
+/* composables/useUsers.js */
+import { ref } from 'vue';
+import { $fetch } from 'ofetch';
+
 export const useUsers = () => {
-    const users = {
-        1: { name: 'Даниил Петров', image: '1.jpg', pass: '12345', login: 'buryat' },
-        2: { name: 'Гавря Гавриловский', image: '2.webp', pass: '11111', login: 'gavrya' },
-        3: { name: 'Мотя Зэк', image: '3.jpg', pass: '22222', login: 'motya' },
-        4: { name: 'Садист Емеля', image: '4.jfif', pass: '33333', login: 'emelya' },
-        5: { name: 'Максим Усанов', image: '5.webp', pass: '44444', login: 'max' },
-        6: { name: 'Алехандро Александрович', image: '6.jpg', pass: '55555', login: 'alex' },
-        7: { name: 'Дурная Слава', image: '7.jpg', pass: '66666', login: 'krendel' },
-        8: { name: 'Серьезный Гонзалес', image: '8.webp', pass: '77777', login: 'igar' },
-        9: { name: 'Добрый Вечер', image: '9.jpg', pass: '88888', login: 'dobre' },
-        10: { name: 'Андрей Гусь', image: '10.webp', pass: '99999', login: 'gus' }
+  const users = ref({});
+
+  const loadUsers = async () => {
+    try {
+      const response = await $fetch('/api/users');
+      console.log('Загруженные пользователи:', response);
+      users.value = response && typeof response === 'object' ? response : {};
+    } catch (error) {
+      console.error('Ошибка загрузки пользователей:', error);
+      users.value = {};
+    }
+  };
+
+  // Вызываем загрузку пользователей один раз при инициализации
+  loadUsers();
+
+  const addUser = async ({ name, login, pass }) => {
+    console.log('Добавление пользователя:', { name, login, pass });
+    // Убедимся, что users загружены
+    await loadUsers();
+
+    // Генерируем новый уникальный ID
+    const keys = Object.keys(users.value).map(Number).filter(id => !isNaN(id));
+    const newId = keys.length ? String(Math.max(...keys) + 1) : '1';
+    console.log('Сгенерирован newId:', newId);
+
+    // Добавляем нового пользователя
+    users.value[newId] = {
+      name,
+      login: login.toLowerCase(),
+      pass,
+      image: 'default.png'
     };
-    
-    return { users };
+
+    // Сохраняем users в JSON-файл через API
+    try {
+      await $fetch('/api/users', {
+        method: 'POST',
+        body: users.value
+      });
+      console.log('Пользователь сохранён, users:', users.value);
+    } catch (error) {
+      console.error('Ошибка сохранения пользователей:', error);
+      throw new Error(`Не удалось сохранить пользователя: ${error.message}`);
+    }
+
+    return newId;
+  };
+
+  return { users, addUser, loadUsers };
 };

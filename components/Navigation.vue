@@ -3,7 +3,7 @@
         <NuxtLink to="/" class="link-cust-header .nuxt-link-active">Главная</NuxtLink> 
         <NuxtLink to="/about" class="link-cust-header">О нас</NuxtLink> 
         <NuxtLink to="/contacts" class="link-cust-header">Контакты</NuxtLink>
-        <NuxtLink to="/users" class="link-cust-header">Друзья</NuxtLink>
+        <NuxtLink to="/users" class="link-cust-header">Люди</NuxtLink>
         <NuxtLink to="/posts" class="link-cust-header">Блог</NuxtLink>
         <NuxtLink to="/api-test" class="link-cust-header">API</NuxtLink>
     </nav>

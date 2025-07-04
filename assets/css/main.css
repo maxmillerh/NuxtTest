@@ -69,6 +69,18 @@ body {
     padding: 0 20px;
 }
 
+.link-text{
+    color: var(--green) ;
+}
+.link-text:hover{
+    color: var(--violet);
+}
+
+.qwestreg{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
 a {
     text-decoration: none;
