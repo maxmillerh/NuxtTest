@@ -1,16 +1,16 @@
 // composables/useUsers.js
 export const useUsers = () => {
     const users = {
-        1: { name: 'Даниил Петров', image: '1.jpg' },
-        2: { name: 'Гавря Гавриловский', image: '2.webp' },
-        3: { name: 'Мотя Зэк', image: '3.jpg' },
-        4: { name: 'Садист Емеля', image: '4.jfif' },
-        5: { name: 'Максим Усанов', image: '5.webp' },
-        6: { name: 'Алехандро Александрович', image: '6.jpg' },
-        7: { name: 'Дурная Слава', image: '7.jpg' },
-        8: { name: 'Серьезный Гонзалес', image: '8.webp' },
-        9: { name: 'Добрый Вечер', image: '9.jpg' },
-        10: { name: 'Андрей Гусь', image: '10.webp' }
+        1: { name: 'Даниил Петров', image: '1.jpg', pass: '12345', login: 'buryat' },
+        2: { name: 'Гавря Гавриловский', image: '2.webp', pass: '11111', login: 'gavrya' },
+        3: { name: 'Мотя Зэк', image: '3.jpg', pass: '22222', login: 'motya' },
+        4: { name: 'Садист Емеля', image: '4.jfif', pass: '33333', login: 'emelya' },
+        5: { name: 'Максим Усанов', image: '5.webp', pass: '44444', login: 'max' },
+        6: { name: 'Алехандро Александрович', image: '6.jpg', pass: '55555', login: 'alex' },
+        7: { name: 'Дурная Слава', image: '7.jpg', pass: '66666', login: 'krendel' },
+        8: { name: 'Серьезный Гонзалес', image: '8.webp', pass: '77777', login: 'igar' },
+        9: { name: 'Добрый Вечер', image: '9.jpg', pass: '88888', login: 'dobre' },
+        10: { name: 'Андрей Гусь', image: '10.webp', pass: '99999', login: 'gus' }
     };
     
     return { users };

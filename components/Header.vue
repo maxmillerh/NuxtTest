@@ -1,16 +1,42 @@
+<!-- components/Header.vue -->
 <template>
-    <header>
-        <Navigation />
-    </header>
+  <header>
+    <div><NuxtLink to="/" class="logo">NUXT MAX</NuxtLink></div>
+    <Navigation />
+    <div>
+      <NuxtLink v-if="!isLoggedIn" to="/login" class="link-cust">Войти</NuxtLink>
+      <NuxtLink v-else :to="`/users/${userId}`" class="link-cust">Профиль</NuxtLink>
+    </div>
+  </header>
 </template>
 
-<style scoped>
+<script setup>
+import { computed } from 'vue';
 
-header{
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const userId = useState('loggedInUserId', () => '');
+const isLoggedIn = computed(() => !!userId.value);
+</script>
+
+<style scoped>
+.link-cust {
+  background-color: var(--violet);
 }
 
+header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-weight: 900;
+  color: var(--violet);
+  font-size: 30px;
+}
+
+.logo.router-link-active {
+  border: none;
+}
 </style>

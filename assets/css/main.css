@@ -19,7 +19,7 @@
 
 
     --green:#369a6e;
-    --violet:#6541b8;
+    --violet:#6441b6;
 }
 
 
@@ -51,11 +51,12 @@ body {
 }
 
 .link-cust:hover{
-    box-shadow: 0px 0px 10px 4px rgb(54, 154, 110, 0.8);
+    box-shadow: 2px 2px  2px rgb(116, 116, 116);
 }
 
 .router-link-active {
-    background-color: blueviolet;
+    transition: none;
+    border-bottom: solid 2px var(--green);
 }
 
 .container {
@@ -89,7 +90,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  padding: 0 20px;
+  padding: 20px 20px;
 }
 
 
@@ -151,6 +152,10 @@ a {
 
 
 /* темная тема */
+
+body.dark-theme .link-cust-header{
+    color: var(--white2);
+}
 
 body.dark-theme {
     background-color: var(--black);
