@@ -2,9 +2,7 @@
 <template>
     <Container>
         <div class="profile-header">
-            <NuxtLink class="back" to="/users">
-                <span>Назад</span>
-            </NuxtLink>
+            <NuxtLink class="back" @click="goBack">Назад</NuxtLink>
             <div>
                 <h1>Профиль пользователя</h1>
                 <img :src="`/img/${userData.image}`" :alt="userData.name" class="profile-avatar" />
@@ -48,6 +46,11 @@ const { data: posts, pending, error } = useAsyncData(
     `user-posts-${route.params.id}`,
     () => $fetch(`/api/posts?userId=${route.params.id}`)
 );
+
+const router = useRouter();
+function goBack() {
+  router.back();
+}
 </script>
 
 <style scoped>

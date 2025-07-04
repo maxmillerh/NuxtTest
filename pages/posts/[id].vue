@@ -1,16 +1,16 @@
 <!-- pages/posts/[id].vue -->
 <template>
-  
+
   <Container>
     <div v-if="pending">Загрузка...</div>
     <div v-else-if="error">Ошибка: {{ error.message }}</div>
     <div v-else>
-      <div class="header-post" >
+      <div class="header-post">
         <NuxtLink class="link-cust" @click="goBack">Назад</NuxtLink>
         <span class="author color-five">Автор: {{ author }}</span>
         <span>Просмотров: {{ pageVisitsPost }}</span>
       </div>
-<h1>{{ post?.title }}</h1>
+      <h1>{{ post?.title }}</h1>
       <p class="post_text">{{ post.text }}</p>
       <div class="comments background-two">
         <h3>Комментарии</h3>
@@ -19,7 +19,9 @@
         <div v-else-if="comments.length === 0">Комментариев пока нет</div>
         <ul v-else class="comment-list">
           <li v-for="comment in comments" :key="`${comment.id}-${comment.userId}`">
-            <strong class="color-two">{{ users[comment.userId]?.name || 'Неизвестный автор' }}:</strong><br>
+            <NuxtLink :to="`/users/${comment.userId}`"><strong class="color-two comment_autor">{{ users[comment.userId]?.name ||
+                'Неизвестный автор' }}:</strong></NuxtLink>
+            <br>
             <span class="color-five">{{ comment.text }}</span>
           </li>
         </ul>
@@ -61,7 +63,7 @@ p {
   margin: 40px 0;
 }
 
-.header-post{
+.header-post {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
@@ -72,7 +74,12 @@ p {
 .author {
   font-style: italic;
   color: #666;
-  
+
+}
+
+.comment_autor:hover{
+  color:var(--green);
+
 }
 
 .comments {
@@ -80,7 +87,7 @@ p {
   margin-top: 80px;
   padding: 20px 30px;
   border-radius: 20px;
-  
+
 }
 
 .comment-list {
@@ -95,6 +102,4 @@ p {
   padding: 10px;
   border-left: 3px solid #369a6e;
 }
-
-
 </style>
