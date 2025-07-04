@@ -67,9 +67,13 @@ a {
 
 .post_text{
     color: var(--gray3);
-    font-size: 20px;
+    font-size: 24px;
     margin: 22px;
     line-height: 150%;
+}
+
+.container-css{
+    padding: 30px 40px !important;
 }
 
 .wrap_Post {
@@ -105,6 +109,37 @@ a {
 }
 
 
+.color-one{
+    color: var(--gray);
+}
+.color-two{
+    color: var(--gray2);
+}
+.color-three{
+    color: var(--gray3);
+}
+.color-four{
+    color: var(--gray4);
+}
+.color-fife{
+    color: var(--gray5);
+}
+
+.background-one{
+    background-color: var(--white);
+}
+.background-two{
+    background-color: var(--white2);
+}
+.background-three{
+    background-color: var(--white3);
+}
+.background-four{
+    background-color: var(--white4);
+}
+.background-five{
+    background-color: var(--white5);
+}
 
 
 /* темная тема */
@@ -153,8 +188,40 @@ body.dark-theme .container-css a {
 }
 body.dark-theme .post_text{
     color: var(--white3);
-
 }
+
+body.dark-theme .color-one{
+    color: var(--white);
+}
+body.dark-theme .color-two{
+    color: var(--white2);
+}
+body.dark-theme .color-three{
+    color: var(--white3);
+}
+body.dark-theme .color-four{
+    color: var(--white4);
+}
+body.dark-theme .color-five{
+    color: var(--white5);
+}
+
+body.dark-theme .background-one{
+    background-color: var(--gray);
+}
+body.dark-theme .background-two{
+    background-color: var(--gray2);
+}
+body.dark-theme .background-three{
+    background-color: var(--gray3);
+}
+body.dark-theme .background-four{
+    background-color: var(--gray4);
+}
+body.dark-theme .background-five{
+    background-color: var(--gray5);
+}
+
 
 @keyframes pulse-dark {
     0% {
