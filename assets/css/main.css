@@ -48,10 +48,11 @@ body {
     color: white;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.5 ease all;
 }
 
 .link-cust:hover{
-    box-shadow: 2px 2px  2px rgb(116, 116, 116);
+    box-shadow: 3px 3px  rgb(0, 0, 0);
 }
 
 .router-link-active {

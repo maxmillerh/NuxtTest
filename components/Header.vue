@@ -20,6 +20,7 @@ const isLoggedIn = computed(() => !!userId.value);
 <style scoped>
 .link-cust {
   background-color: var(--violet);
+  transition: 0.5 all ease;
 }
 
 header {

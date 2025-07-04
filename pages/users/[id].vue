@@ -27,7 +27,7 @@
           <PostCard :title="post.title" :description="post.description"></PostCard>
         </NuxtLink>
       </div>
-      <button v-if="isLoggedIn" class="link-cust logout-btn" @click="handleLogout">Выйти</button>
+      <button v-if="isLoggedIn" class="link-cust link-cust" @click="handleLogout">Выйти</button>
     </div>
   </Container>
 </template>
@@ -138,14 +138,15 @@ h3 {
   margin-bottom: 10px;
 }
 
-.logout-btn {
+.link-cust {
   display: block;
   width: 200px;
   margin: 20px auto;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  border: none;
 }
 
 .error-message {

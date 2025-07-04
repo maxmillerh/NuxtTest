@@ -18,7 +18,10 @@ nav{
     color: var(--black);
     font-weight: 600;
     font-size: 20px;
-
 }
+
+/* .link-cust-header:hover{
+    text-shadow: 3px 3px black;
+} */
 
 </style>
