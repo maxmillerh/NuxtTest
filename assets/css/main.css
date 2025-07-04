@@ -34,7 +34,7 @@
 
 
 body {
-    background-color: aliceblue;
+    background-color: var(--white2);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: 0.4s all ease;
 }
